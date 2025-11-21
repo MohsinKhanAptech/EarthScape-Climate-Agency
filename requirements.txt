@@ -1,0 +1,13 @@
+# Python Dependencies
+
+flask
+pandas
+scikit-learn
+matplotlib
+jinja2
+werkzeug
+flask-pymongo
+flask-mail
+requests
+dotenv
+seaborn
