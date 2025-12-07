@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold" style="color: var(--brand-dark);">Analyst Dashboard</h2>
+            <p class="text-muted mb-0">Generate predictive models using the Random Forest Engine.</p>
+        </div>
+        <div class="alert alert-success d-inline-block py-2 px-3 shadow-sm mb-0">
+            <i class="bi bi-server"></i> <strong>HDFS Status:</strong> Online (Active)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0 fw-bold"><i class="bi bi-sliders text-primary"></i> Configuration</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="city" class="form-label fw-bold small text-uppercase">Select Region</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-geo-alt"></i></span>
+                                <select name="city" id="city" class="form-select" required>
+                                    <option value="" disabled selected>Choose a city...</option>
+                                    {% for city in cities %}
+                                        <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>
+                                            {{ city }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small text-uppercase">Forecast Period</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-calendar-event"></i></span>
+                                <input type="month" name="date_picker" class="form-control"
+                                       value="{{ selected_date or '2025-01' }}" required>
+                            </div>
+                            <div class="form-text">Select the month and year for prediction.</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-brand w-100 mt-3 shadow-sm">
+                            <i class="bi bi-lightning-charge"></i> Run Prediction
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            {% if prediction %}
+                <div class="card shadow-sm mb-4 border-start border-4 border-success">
+                    <div class="card-body d-flex justify-content-between align-items-center p-4">
+                        <div>
+                            <h6 class="text-uppercase text-muted fw-bold mb-1">Forecast Result</h6>
+                            <h3 class="fw-bold mb-0" style="color: var(--brand-dark);">{{ selected_city }}</h3>
+                            <p class="text-muted small mb-0">Period: {{ selected_date }}</p>
+                        </div>
+                        <div class="text-end">
+                            <h1 class="display-4 fw-bold mb-0" style="color: var(--brand-green);">{{ prediction }}°C</h1>
+                            <span class="badge bg-light text-dark border">Average Temp</span>
+                        </div>
+                    </div>
+                </div>
+
+                {% if plot_url %}
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0 fw-bold">Annual Trend Analysis</h5>
+                        <a href="{{ plot_url }}" download class="btn btn-sm btn-outline-secondary"><i class="bi bi-download"></i> Save</a>
+                    </div>
+                    <div class="card-body text-center p-4 bg-light">
+                        <img src="{{ plot_url }}" class="img-fluid rounded shadow-sm border" alt="Temperature Trend Graph">
+                        <p class="small text-muted mt-3 mb-0">
+                            <i class="bi bi-info-circle"></i> Graph generated dynamically based on historical patterns for this region.
+                        </p>
+                    </div>
+                </div>
+                {% endif %}
+
+            {% else %}
+                <div class="card border-0 h-100 bg-light rounded-3">
+                    <div class="card-body d-flex flex-column align-items-center justify-content-center text-center p-5 opacity-75">
+                        <i class="bi bi-bar-chart-steps fs-1 text-secondary mb-3"></i>
+                        <h4 class="text-secondary">Ready to Analyze</h4>
+                        <p class="text-muted" style="max-width: 400px;">
+                            Select a region and date to generate climate insights and visualizations.
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

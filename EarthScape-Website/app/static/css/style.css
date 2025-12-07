@@ -1,0 +1,251 @@
+/* --- 1. FONTS & VARIABLES --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --brand-dark: #1a252f;       /* Dark Navy */
+    --brand-primary: #2c3e50;    /* Slate Blue */
+    --brand-accent: #1abc9c;     /* Teal/Cyan */
+    --brand-green: #27ae60;      /* Earth Green */
+    --brand-light: #ecf0f1;      /* Soft Gray */
+    --text-color: #333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- 2. NAVBAR --- */
+.navbar {
+    background-color: var(--brand-dark) !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+    color: var(--brand-accent) !important;
+}
+
+.nav-link {
+    font-weight: 400;
+    color: rgba(255,255,255,0.8) !important;
+    transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--brand-accent) !important;
+}
+
+/* --- 3. HERO SECTION (Landing Page) --- */
+.hero-section {
+    background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-primary) 100%);
+    color: white;
+    padding: 80px 0;
+    margin-bottom: 2rem;
+    border-bottom: 5px solid var(--brand-accent);
+}
+
+.hero-title {
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-weight: 300;
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.btn-brand {
+    background-color: var(--brand-accent);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    border: none;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-brand:hover {
+    background-color: #16a085;
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* --- 4. CARDS & DASHBOARD --- */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+    overflow: hidden;
+}
+
+/* Hover effect for feature cards on home page */
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background-color: white;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+    padding: 1rem 1.5rem;
+}
+
+/* --- 5. FORMS (Login/Signup) --- */
+.auth-card {
+    margin-top: 2rem;
+    border-top: 4px solid var(--brand-accent);
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.form-control:focus {
+    border-color: var(--brand-accent);
+    box-shadow: 0 0 0 0.2rem rgba(26, 188, 156, 0.25);
+}
+
+/* --- 6. FOOTER --- */
+footer {
+    margin-top: auto;
+    background-color: var(--brand-dark);
+    color: rgba(255,255,255,0.6);
+    padding: 2rem 0;
+}
+
+/* --- 7. CUSTOM FLASH ALERTS (Floating Toasts) --- */
+.flash-container {
+    position: fixed;
+    top: 90px; /* Just below the navbar */
+    right: 20px;
+    z-index: 9999;
+    width: 100%;
+    max-width: 400px;
+    pointer-events: none; /* Let clicks pass through if empty */
+}
+
+.custom-alert {
+    background-color: white;
+    border: none;
+    border-left: 5px solid #ccc; /* Default */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    color: var(--brand-dark);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    pointer-events: auto; /* Re-enable clicks for the close button */
+
+    /* Animation */
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInRight 0.4s forwards ease-out;
+}
+
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Theme Colors for Alerts */
+.custom-alert.alert-success { border-color: var(--brand-green); }
+.custom-alert.alert-danger  { border-color: #e74c3c; }
+.custom-alert.alert-warning { border-color: #f39c12; }
+.custom-alert.alert-info    { border-color: var(--brand-accent); }
+
+/* Typography inside alert */
+.custom-alert strong { font-weight: 600; }
+.custom-alert .btn-close { font-size: 0.8rem; }
+
+/* --- 8. COMPONENT REFINEMENTS --- */
+
+/* CUSTOM TABLES (Used in Notifications) */
+.table {
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Adds space between rows like cards */
+}
+
+.table thead th {
+    border: none;
+    color: var(--brand-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding-bottom: 1rem;
+}
+
+.table tbody tr {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.table tbody tr:hover {
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.table td {
+    border: none;
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.table td:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.table td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* CUSTOM BADGES */
+.badge {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 0.5em 0.8em;
+}
+
+/* Brand-specific badge colors */
+.bg-success {
+    background-color: var(--brand-green) !important;
+}
+
+.bg-secondary {
+    background-color: #95a5a6 !important; /* Softer gray than default */
+}
+
+/* INPUT FOCUS STATES (Removing the blue glow) */
+.form-control:focus, .form-select:focus {
+    border-color: var(--brand-accent);
+    box-shadow: 0 0 0 0.25rem rgba(26, 188, 156, 0.25); /* Teal glow */
+}
+
+/* NAVBAR TOGGLER (Mobile Menu) */
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}

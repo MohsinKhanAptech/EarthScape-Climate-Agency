@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-section text-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="hero-title">Predicting Tomorrow's Climate</h1>
+                <p class="hero-subtitle">
+                    We leverage Satellite Imagery, IoT Sensors, and Hadoop Big Data processing to monitor global temperature shifts and protect our future.
+                </p>
+                {% if not current_user.is_authenticated %}
+                    <a href="{{ url_for('auth.signup') }}" class="btn btn-brand btn-lg shadow">
+                        <i class="bi bi-person-plus-fill"></i> Join the Platform
+                    </a>
+                {% else %}
+                     <a href="{{ url_for('views.dashboard') }}" class="btn btn-brand btn-lg shadow">
+                        <i class="bi bi-graph-up-arrow"></i> Go to Dashboard
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container mb-5">
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0 fw-bold text-danger"><i class="bi bi-activity"></i> Global Warming Trend</h5>
+                </div>
+                <div class="card-body p-2">
+                    <img src="{{ url_for('static', filename='images/plots/global_trend.png') }}" class="img-fluid rounded" alt="Global Temperature Trend">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2 class="fw-bold" style="color: var(--brand-dark);">Real-Time Data Analysis</h2>
+            <p class="text-muted lead">
+                Our HDFS clusters process over <strong class="text-primary">5 Petabytes</strong> of historical climate data to visualize the warming trends of the last century.
+            </p>
+            <div class="row g-3 mt-3">
+                <div class="col-sm-6">
+                    <div class="p-3 border rounded bg-light text-center">
+                        <h1 class="fw-bold text-danger mb-0">1.2°C</h1>
+                        <small class="text-muted text-uppercase fw-bold">Avg Global Rise</small>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="p-3 border rounded bg-light text-center">
+                        <h1 class="fw-bold text-success mb-0">100+</h1>
+                        <small class="text-muted text-uppercase fw-bold">Cities Monitored</small>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-4 small text-muted">
+                *Data source: Global Land Temperatures by Major City (1849-2013).
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="text-center mb-4">
+        <h6 class="text-uppercase text-muted fw-bold">Our Technology Stack</h6>
+        <h2 class="fw-bold">Powered by Big Data</h2>
+    </div>
+    <div class="row text-center g-4">
+        <div class="col-md-4">
+            <div class="card h-100 feature-card p-4">
+                <div class="card-body">
+                    <div class="text-primary mb-3">
+                        <i class="bi bi-hdd-network fs-1" style="color: var(--brand-accent);"></i>
+                    </div>
+                    <h3 class="card-title">Big Data Ingestion</h3>
+                    <p class="text-muted">
+                        Scalable HDFS architecture capable of ingesting terabytes of satellite and sensor data in real-time.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 feature-card p-4">
+                <div class="card-body">
+                    <div class="text-primary mb-3">
+                        <i class="bi bi-cpu fs-1" style="color: var(--brand-green);"></i>
+                    </div>
+                    <h3 class="card-title">Machine Learning</h3>
+                    <p class="text-muted">
+                        Advanced Random Forest algorithms trained on historical datasets to forecast future anomalies with high accuracy.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 feature-card p-4">
+                <div class="card-body">
+                    <div class="text-primary mb-3">
+                        <i class="bi bi-bar-chart-line fs-1" style="color: var(--brand-primary);"></i>
+                    </div>
+                    <h3 class="card-title">Visual Analytics</h3>
+                    <p class="text-muted">
+                        Interactive dashboards providing actionable insights for researchers and policy makers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card auth-card shadow-lg">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold" style="color: var(--brand-primary);">Join EarthScape</h2>
+                        <p class="text-muted">Create an account to start analyzing climate data</p>
+                    </div>
+
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Choose Username</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-person-plus"></i></span>
+                                <input type="text" name="username" class="form-control" placeholder="e.g. climate_analyst_01" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Choose Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-lock"></i></span>
+                                <input type="password" name="password" class="form-control" placeholder="Create a strong password" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Role</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-briefcase"></i></span>
+                                <select name="role" class="form-select">
+                                    <option value="analyst">Climate Analyst</option>
+                                    <option value="admin">Administrator</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-brand w-100 py-2">Create Account</button>
+                    </form>
+                </div>
+                <div class="card-footer bg-light text-center py-3">
+                    <small>Already have an account? <a href="{{ url_for('auth.signin') }}" class="fw-bold text-decoration-none" style="color: var(--brand-accent);">Sign In</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

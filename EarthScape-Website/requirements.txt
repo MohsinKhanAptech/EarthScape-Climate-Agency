@@ -1,13 +1,14 @@
-# Python Dependencies
-
 flask
-pandas
-scikit-learn
-matplotlib
-jinja2
-werkzeug
+flask-login
 flask-pymongo
 flask-mail
-requests
-dotenv
+pandas
+scikit-learn
+numpy
+matplotlib
 seaborn
+jinja2
+werkzeug
+requests
+python-dotenv
+joblib

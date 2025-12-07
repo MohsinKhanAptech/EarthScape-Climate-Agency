@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold">System Alerts Log</h2>
+            <p class="text-muted">History of automated notifications triggered by the ML Engine.</p>
+        </div>
+        <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-light">
+                    <tr>
+                        <th class="ps-4 py-3">Status</th>
+                        <th>Date & Time</th>
+                        <th>Region</th>
+                        <th>Alert Message</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for alert in alerts %}
+                    <tr>
+                        <td class="ps-4">
+                            <i class="bi bi-exclamation-triangle-fill text-warning fs-5"></i>
+                        </td>
+                        <td class="fw-bold text-secondary">{{ alert.date }}</td>
+                        <td><span class="badge bg-light text-dark border">{{ alert.city }}</span></td>
+                        <td class="text-danger fw-bold">{{ alert.msg }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-light text-primary">View</button>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center py-5 text-muted">
+                            <i class="bi bi-check-circle fs-2 text-success"></i><br>
+                            No critical alerts found in the logs.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-dark text-white p-4">
+                    <h3 class="mb-0"><i class="bi bi-life-preserver text-info"></i> Support Center</h3>
+                    <p class="mb-0 opacity-75">We are here to help. Send us your queries or report anomalies.</p>
+                </div>
+                <div class="card-body p-5">
+                    <form method="POST">
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Your Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                <input type="email" name="email" class="form-control"
+                                       value="{{ current_user.username + '@example.com' if current_user.is_authenticated else '' }}" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Topic</label>
+                            <select name="subject" class="form-select">
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Bug Report">Report a Bug</option>
+                                <option value="Feature Request">Request a Feature</option>
+                                <option value="Data Issue">Data Accuracy Issue</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Message Details</label>
+                            <textarea name="message" class="form-control" rows="6" placeholder="Describe your issue in detail..." required></textarea>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-brand btn-lg">
+                                <i class="bi bi-send-fill"></i> Submit Ticket
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

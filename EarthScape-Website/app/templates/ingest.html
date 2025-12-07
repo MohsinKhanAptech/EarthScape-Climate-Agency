@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h2 class="fw-bold" style="color: var(--brand-dark);">Data Ingestion Control</h2>
+            <p class="text-muted">Manage data flow into the Hadoop Distributed File System.</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+            <div class="alert alert-success d-inline-block py-2 px-3 shadow-sm mb-0">
+                <i class="bi bi-server"></i> <strong>HDFS Status:</strong> Online (Active)
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-white p-3">
+            <h5 class="mb-0 fw-bold"><i class="bi bi-cloud-upload text-primary"></i> Upload New Dataset</h5>
+        </div>
+        <div class="card-body p-5 text-center bg-light">
+            <div class="mb-4">
+                <i class="bi bi-file-earmark-spreadsheet text-muted" style="font-size: 4rem;"></i>
+            </div>
+            <h4 class="mb-3" style="color: var(--brand-dark);">Select Dataset</h4>
+            <p class="text-muted mb-4 mx-auto" style="max-width: 600px;">
+                Upload raw climate data from weather stations or satellites. Large CSV files will be partitioned and distributed across HDFS nodes automatically.
+            </p>
+
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="input-group input-group-lg shadow-sm">
+                            <input type="file" class="form-control" id="dataset" name="dataset" required>
+                            <button type="submit" class="btn btn-brand">
+                                <i class="bi bi-upload"></i> Start Ingestion
+                            </button>
+                        </div>
+                        <div class="form-text mt-2">Supported formats: .csv, .json, .parquet</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-white p-3">
+            <h5 class="mb-0 fw-bold">Recent Ingestion Jobs</h5>
+        </div>
+        <div class="card-body p-0">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                    <div>
+                        <span class="fw-bold" style="color: var(--brand-primary);">Job #9921:</span> Satellite_Asia_2024.csv
+                        <div class="small text-muted">Completed 2 hours ago</div>
+                    </div>
+                    <span class="badge bg-success rounded-pill">Success</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                    <div>
+                        <span class="fw-bold" style="color: var(--brand-primary);">Job #9920:</span> Sensor_London_North.csv
+                        <div class="small text-muted">Completed 5 hours ago</div>
+                    </div>
+                    <span class="badge bg-success rounded-pill">Success</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
