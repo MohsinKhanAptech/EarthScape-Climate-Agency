@@ -1,0 +1,118 @@
+================================================================================
+EARTHSCAPE CLIMATE MONITORING SYSTEM - PROJECT README
+================================================================================
+
+PROJECT OVERVIEW
+-----------------
+Project Name: EarthScape Climate Agency Monitoring System
+Developer:    [Your Name]
+Date:         December 2025
+Technology:   Python (Flask), Hadoop (MapReduce), MongoDB, Machine Learning
+
+DESCRIPTION
+-----------
+This project is a comprehensive Big Data solution designed for the EarthScape
+Climate Agency. It integrates data ingestion, storage, processing, and
+visualization to monitor climate trends. The system features a secure web
+portal for analysts to view real-time data and generate temperature predictions
+using a Random Forest Machine Learning model.
+
+================================================================================
+1. ASSUMPTIONS MADE
+================================================================================
+Per the project requirements, the following assumptions were made during development:
+
+1.  Single-Node Hadoop Simulation:
+    It is assumed that the application is running in a development environment
+    where a full multi-node Hadoop cluster may not be available. The
+    'hdfs_ingest.py' script includes a simulation mode that mimics data upload
+    if local HDFS commands are not detected.
+
+2.  Local MongoDB Instance:
+    The application assumes a local instance of MongoDB is running on the
+    standard port (27017). The database 'earthscape_db' is automatically
+    created upon the first user registration.
+
+3.  Internet Connectivity:
+    The frontend uses Content Delivery Networks (CDNs) for Bootstrap (CSS/JS).
+    An active internet connection is assumed for the user interface to render
+    correctly.
+
+4.  Data Source:
+    The dataset 'GlobalLandTemperaturesByMajorCity.csv' is assumed to be
+    clean and present in the 'data/' directory.
+
+================================================================================
+2. PREREQUISITES & SOFTWARE REQUIREMENTS
+================================================================================
+Ensure the following are installed before running the application:
+
+* Python 3.8 or higher
+* MongoDB (Community Server)
+* Java Development Kit (JDK 8 or higher) - Required for Hadoop
+* Google Chrome or Mozilla Firefox
+
+================================================================================
+3. INSTALLATION INSTRUCTIONS
+================================================================================
+Step 1: Unzip the Project
+Extract the contents of 'EarthScape_Project.zip' to a local folder.
+
+Step 2: Initialize Virtual Environment
+Open a terminal in the project root and run:
+   Windows:
+     python -m venv venv
+     venv\Scripts\activate
+   Mac/Linux:
+     python3 -m venv venv
+     source venv/bin/activate
+
+Step 3: Install Dependencies
+Run the following command to install Flask, Pandas, Scikit-Learn, etc.:
+   pip install -r requirements.txt
+
+Step 4: Environment Configuration
+Ensure the '.env' file is present in the root directory with the correct
+MongoDB URI and Secret Key. (A sample is provided).
+
+================================================================================
+4. HOW TO RUN THE PROJECT
+================================================================================
+
+A. RUNNING THE WEB APPLICATION
+------------------------------
+1.  Ensure your virtual environment is active.
+2.  Run the application entry point:
+    python run.py
+3.  Open your web browser and navigate to:
+    http://127.0.0.1:5000/
+
+B. RUNNING DATA INGESTION (BACKEND)
+-----------------------------------
+To simulate the upload of data to HDFS:
+1.  Open a new terminal window.
+2.  Navigate to the project root.
+3.  Run:
+    python big_data/hdfs_ingest.py
+
+C. RUNNING MAPREDUCE JOBS
+-------------------------
+To execute the batch processing job locally:
+    python big_data/map_reduce_jobs.py data/GlobalLandTemperaturesByMajorCity.csv
+
+================================================================================
+5. FOLDER STRUCTURE GUIDE
+================================================================================
+* app/            -> Contains the Flask web application code, templates, and static files.
+* app/models/     -> Contains the trained Machine Learning models (.pkl files).
+* big_data/       -> Python scripts for HDFS ingestion and MapReduce jobs.
+* data/           -> Stores the raw CSV datasets.
+* docs/           -> Project Report, User Manual, and Diagrams.
+* requirements.txt -> List of Python libraries used.
+
+================================================================================
+6. CONTACT
+================================================================================
+For any issues regarding installation or execution, please contact the developer
+at [Your Email].
+
