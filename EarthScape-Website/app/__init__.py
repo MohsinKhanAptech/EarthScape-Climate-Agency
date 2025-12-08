@@ -1,9 +1,8 @@
+from config.config import Config
 from flask import Flask
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_pymongo import PyMongo
-
-from config.config import Config
 
 # --- Initialize Extensions (Global Scope) ---
 mongo = PyMongo()
@@ -38,7 +37,7 @@ def create_app():
 
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
-    app.register_blueprint(feedback, url_prefix="/support")
+    app.register_blueprint(feedback, url_prefix="/feedback")
     app.register_blueprint(notifications, url_prefix="/alerts")
     app.register_blueprint(ingestion, url_prefix="/ingestion")  # <--- REGISTER THIS
 

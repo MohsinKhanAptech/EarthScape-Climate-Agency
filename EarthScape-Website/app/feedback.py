@@ -24,7 +24,7 @@ def contact():
 
         try:
             msg = Message(
-                subject=f"[EarthScape Support] {subject}",
+                subject=f"[EarthScape Feedback] {subject}",
                 recipients=["muhammadmohsinkhan.aptech@gmail.com"],
                 body=f"{message_body}\n\n--\n{sender_info}",
                 sender=user_email,
