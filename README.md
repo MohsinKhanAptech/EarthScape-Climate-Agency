@@ -235,5 +235,3 @@ This project is licensed under the MIT License.
 
   * EarthScape Climate Agency Project
   * **Batch:** 2301C1
-
-<!-- end list -->
