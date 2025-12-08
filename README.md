@@ -92,7 +92,7 @@ The application follows a modular MVC (Model-View-Controller) pattern integrated
 Ensure you have Git LFS installed to pull the large model files automatically.
 ```bash
 git lfs install
-git clone https://github.com/your-username/earthscape-climate-system.git
+git clone https://github.com/MohsinKhanAptech/earthscape-climate-system.git
 cd earthscape-climate-system
 ````
 
