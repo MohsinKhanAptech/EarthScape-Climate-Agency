@@ -1,5 +1,7 @@
 # 🌍 EarthScape Climate Monitoring System
 
+**THIS IS A APTECH ASSIGNMENT**
+
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python)
 ![Flask](https://img.shields.io/badge/Flask-2.0%2B-green?style=for-the-badge&logo=flask)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Database-green?style=for-the-badge&logo=mongodb)
